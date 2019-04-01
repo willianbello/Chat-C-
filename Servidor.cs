@@ -44,16 +44,18 @@ public class Servidor
                 while(status){
                     mensagemEnviada = Console.ReadLine();
                     if (!String.IsNullOrEmpty(mensagemEnviada)){
-                        escritor.WriteLine(nome + ": " + mensagemEnviada);
-                        escritor.Flush();
-                        Console.WriteLine("Voce: " + mensagemEnviada);
 
                         if((mensagemEnviada == "/sair" || mensagemEnviada == "/SAIR")){
+                            escritor.WriteLine(mensagemEnviada);
                             status = false;
                             leitor.Close();
                             conexao.Close();
                             escritor.Close();
                         }
+
+                        escritor.WriteLine(nome + ": " + mensagemEnviada);
+                        escritor.Flush();
+                        Console.WriteLine("Voce: " + mensagemEnviada);
 
                         mensagemEnviada = null;
                     }   
