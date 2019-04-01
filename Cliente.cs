@@ -23,9 +23,14 @@ public class Cliente
         try{
             Console.Write("Digite o IP do servidor: ");
             string IPServidor = Console.ReadLine();
-            servidor = new TcpClient(IPServidor, 8090); 
-            Console.WriteLine("Voce foi conectado no servidor");
-            Console.WriteLine("\nPara Sair digite \"/sair\"");
+            servidor = new TcpClient(IPServidor, 8090);
+            if (servidor.Connected){
+                Console.WriteLine("Voce foi conectado no servidor");
+                Console.WriteLine("\nPara Sair digite \"/sair\"");
+            }else{
+                Console.WriteLine("O servidor esta ocupado...");
+            }
+
         }catch{
             Console.WriteLine("Falha de Conexao");
             return;
